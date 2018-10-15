@@ -7,3 +7,5 @@ min-tb:annotations_and_spikeins otto$ python3 ../merge_annotation.py --annotatio
 ```bash
 min-tb:annotations_and_spikeins otto$ python3 ../merge_annotation.py --annotation gencode.vM7.annotation.gtf.gz --tRNA gencode.vM7.tRNAs.gtf.gz --spikeins ENCFF001RTP_spikes_ENCFF335FFV_spikes.fasta.gz --output_filename gencode.vM7.trna.ercc.phix.gtf.gz
 ```
+
+Subsequently the transcript id and gene type are extracted from the file resulting from the merge_annotation.py step by running the accompanied python script `build_transcript_id_to_gene_type_tsv.py`.
