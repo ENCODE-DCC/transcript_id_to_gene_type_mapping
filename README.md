@@ -14,3 +14,23 @@ Subsequently the transcript id and gene type are extracted from the file resulti
 ```bash
 min-tb:github otto$ python3 build_transcript_id_to_gene_type_tsv.py --input_annotation annotations_and_spikeins/gencode.vM7.trna.ercc.phix.gtf.gz --output_tsv gencode.vM7.trna.ercc.phix.transcript_id_to_genes.tsv
 ``` 
+
+# rRNA and Mt_rRNA removal
+
+Within `annotations_and_spikeins` folder are also annotation files (with spikeins), from which all rRNA annotations are removed, and files from which rRNA, excluding Mt_rRNA annotations are removed. This was done by using unix shell commands in the following way:
+
+## Remove all rRNA.
+
+As an example, the shell command to remove all rRNA annotations from `ENCFF824ZKD_gencodeV24pri-tRNAs-ERCC-phiX.gtf.gz`
+
+```bash
+min-tb:annotations_and_spikeins otto$ gzip -cd ENCFF824ZKD_gencodeV24pri-tRNAs-ERCC-phiX.gtf.gz | grep -v rRNA | gzip -n > ENCFF824ZKD_gencodeV24pri-tRNAs-ERCC-phiX-minus-rRNA-and-Mt-rRNA.gtf.gz
+```
+
+## Remove rRNA , leave Mt_rRNA in.
+
+As an example, the shell command to remove rRNA annotations, leaving Mt_rRNA annotations untouched from gencode.vM7.trna.ercc.phix.gtf.gz.
+
+```bash
+min-tb:annotations_and_spikeins otto$ gzip -cd gencode.vM7.trna.ercc.phix.gtf.gz | grep -v \"rRNA | gzip -n > gencode.vM7.trna.ercc.phix.minus.rRNA.gtf.gz 
+```
